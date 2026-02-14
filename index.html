@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Valentine Dreamland ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sacramento&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        :root { --pink: #ff4d6d; --red: #c9184a; --soft-pink: #ffb3c1; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(45deg, #fff0f3, #ffccd5, #fff0f3, #ffb3c1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #590d22;
+            overflow-x: hidden;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-blobs {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; overflow: hidden; pointer-events: none;
+        }
+        .blob {
+            position: absolute; background: rgba(255, 77, 109, 0.15);
+            filter: blur(50px); border-radius: 50%;
+            animation: moveBlobs 20s infinite alternate;
+        }
+        .blob1 { width: 300px; height: 300px; top: -100px; left: -50px; }
+        .blob2 { width: 250px; height: 250px; bottom: 50px; right: -50px; animation-duration: 25s; }
+
+        @keyframes moveBlobs {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(50px, 100px) scale(1.2); }
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto/foto9.png') center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 20px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+        }
+        .judul { font-family: 'Fredoka One', cursive; font-size: 3.5rem; text-shadow: 3px 3px var(--red); animation: heartbeat 1.5s infinite; }
+        .typing { font-size: 1rem; margin-top: 15px; padding: 10px 20px; background: rgba(255,255,255,0.2); border-radius: 30px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); min-height: 50px; display: flex; align-items: center; }
+
+        /* SURAT */
+        .envelope-container { margin: 60px auto; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 10; }
+        .envelope-wrapper { position: relative; width: 280px; height: 180px; background: #ff758f; border-radius: 0 0 15px 15px; cursor: pointer; transition: 0.5s; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .envelope-wrapper::before { content: ""; position: absolute; top: 0; z-index: 4; border-top: 100px solid var(--pink); border-left: 140px solid transparent; border-right: 140px solid transparent; transform-origin: top; transition: 0.5s; }
+        .envelope-wrapper::after { content: ""; position: absolute; bottom: 0; z-index: 3; border-bottom: 90px solid #ff8fa3; border-left: 140px solid #ffb3c1; border-right: 140px solid #ffb3c1; border-radius: 0 0 15px 15px; }
+        .letter { position: absolute; bottom: 10px; left: 15px; width: 250px; height: 150px; background: white; padding: 20px; border-radius: 10px; z-index: 2; transition: 0.5s; text-align: center; font-family: 'Sacramento', cursive; font-size: 1.3rem; line-height: 1.4; color: #590d22; }
+        .envelope-wrapper.open::before { transform: rotateX(180deg); z-index: 1; }
+        .envelope-wrapper.open .letter { transform: translateY(-130px); height: 230px; z-index: 5; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+
+        /* GALERI */
+        .container { width: 100%; max-width: 550px; margin: auto; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .item { border-radius: 20px; overflow: hidden; background: #fff; border: 4px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.1); animation: float-photo 4s ease-in-out infinite alternate; }
+        .item:nth-child(even) { animation-delay: 2s; }
+        .photo { aspect-ratio: 1 / 1; }
+        .photo img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* VIDEO TIKTOK STYLE */
+        .video-tiktok { aspect-ratio: 9/16; border-radius: 20px; background: #000; overflow: hidden; }
+        .video-tiktok video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ANIMATIONS */
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes float-photo { from { transform: translateY(0) rotate(-1deg); } to { transform: translateY(-15px) rotate(1deg); } }
+        @keyframes pop-particle { 0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; } 100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.5); opacity: 0; } }
+
+        .particle { position: fixed; pointer-events: none; z-index: 9999; animation: pop-particle 0.8s ease-out forwards; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+        .visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+        .music-btn { position: fixed; bottom: 20px; right: 20px; background: var(--pink); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; box-shadow: 0 5px 20px rgba(255,77,109,0.5); color: white; border: 3px solid white; font-size: 24px; }
+        footer { padding: 60px 20px; text-align: center; font-family: 'Fredoka One'; color: var(--red); }
+        .emoji-fall { position: fixed; top: -50px; z-index: 999; pointer-events: auto; }
+    </style>
+</head>
+<body onclick="createBurst(event)">
+
+    <div class="bg-blobs">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+    </div>
+
+    <audio id="lagu" loop><source src="song/song.mp3" type="audio/mpeg"></audio>
+    <div class="music-btn" onclick="putarMusik()">🎵</div>
+
+    <section class="hero">
+        <h1 class="judul">Happy Valentine! ❤️</h1>
+        <p id="teks-ketik" class="typing"></p>
+    </section>
+
+    <div class="container">
+        <div class="envelope-container fade-in">
+            <h2 style="font-family:'Fredoka One'; margin-bottom: 25px; color: var(--red);">Klik Amplopnya! 👇</h2>
+            <div class="envelope-wrapper" onclick="toggleSurat(this)">
+                <div class="letter">
+                    <b>To My Love,</b><br>
+                    you are the beginning and the end of my thoughts you are the reason why i smile every day why i feel alive.<br>
+                    and hopeful, why i am cherish every moment we share<br> 
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align:center; font-family:'Fredoka One'; margin: 50px 0 25px; color: var(--pink); font-size: 2rem;">Bidadari Kecilku ✨</h2>
+        
+        <div class="grid">
+            <div class="item photo fade-in"><img src="foto/foto1.jpg"></div>
+            <div class="item photo fade-in"><img src="foto/foto2.jpg"></div>
+            
+            <div class="item video-tiktok fade-in">
+                <video autoplay muted loop playsinline><source src="foto/video1.mp4" type="video/mp4"></video>
+            </div>
+            <div class="item video-tiktok fade-in">
+                <video autoplay muted loop playsinline><source src="foto/video2.mp4" type="video/mp4"></video>
+            </div>
+
+            <div class="item photo fade-in"><img src="foto/foto3.jpg"></div>
+            <div class="item photo fade-in"><img src="foto/foto4.jpg"></div>
+
+            <div class="item video-tiktok fade-in">
+                <video autoplay muted loop playsinline><source src="foto/video3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="item video-tiktok fade-in">
+                <video autoplay muted loop playsinline><source src="foto/video4.mp4" type="video/mp4"></video>
+            </div>
+
+            <div class="item photo fade-in"><img src="foto/foto5.jpg"></div>
+            <div class="item photo fade-in"><img src="foto/foto6.jpg"></div>
+        </div>
+    </div>
+
+    <footer class="fade-in">
+        <p>Happy Valentine's Day from Verr to Nadya❤️</p>
+        <p style="font-family:'Poppins'; font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">14 Februari 2026</p>
+    </footer>
+
+    <script>
+        // TYPEWRITER EFFECT
+        const text = "to the most beautiful person i've ever known❤️🍫";
+        let i = 0;
+        function typing() {
+            if (i < text.length) {
+                document.getElementById("teks-ketik").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, 100);
+            }
+        }
+
+        // ENVELOPE TOGGLE
+        function toggleSurat(el) {
+            el.classList.toggle('open');
+            if(el.classList.contains('open')) {
+                // Burst effect when opened
+                for(let i=0; i<15; i++) {
+                    setTimeout(() => createBurst({clientX: window.innerWidth/2, clientY: window.innerHeight/2}), i * 60);
+                }
+            }
+        }
+
+        // MUSIC CONTROL
+        const lagu = document.getElementById("lagu");
+        function putarMusik() {
+            if (lagu.paused) { 
+                lagu.play().catch(e => console.log("User interaction required"));
+                document.querySelector(".music-btn").innerHTML = "🌸"; 
+            } else { 
+                lagu.pause(); 
+                document.querySelector(".music-btn").innerHTML = "🎵"; 
+            }
+        }
+
+        // PARTICLE CLICK BURST
+        function createBurst(e) {
+            const icons = ['❤️', '💖', '✨', '🍫', '🌹'];
+            for (let i = 0; i < 8; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                p.style.left = e.clientX + 'px';
+                p.style.top = e.clientY + 'px';
+                p.style.fontSize = Math.random() * 15 + 15 + 'px';
+                p.style.setProperty('--x', (Math.random() - 0.5) * 250 + 'px');
+                p.style.setProperty('--y', (Math.random() - 0.5) * 250 + 'px');
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 800);
+            }
+        }
+
+        // FALLING EMOJIS
+        setInterval(() => {
+            const emojis = ['🌹', '🍫', '💝', '✨', '🍬'];
+            const e = document.createElement('div');
+            e.className = 'emoji-fall';
+            e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            e.style.left = Math.random() * 95 + 'vw';
+            e.style.fontSize = Math.random() * 20 + 20 + 'px';
+            const duration = Math.random() * 3 + 4;
+            document.body.appendChild(e);
+            
+            e.animate([
+                { transform: 'translateY(-50px) rotate(0deg)' },
+                { transform: `translateY(${window.innerHeight + 50}px) rotate(360deg)` }
+            ], { duration: duration * 1000, easing: 'linear' }).onfinish = () => e.remove();
+
+            e.onclick = (event) => {
+                event.stopPropagation();
+                createBurst(event);
+                e.remove();
+            };
+        }, 700);
+
+        // FADE IN ON SCROLL
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        window.onload = () => {
+            typing();
+            // Optional: Start video on click if needed
+            document.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
+        };
+    </script>
+</body>
+</html>

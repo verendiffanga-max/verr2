@@ -1,0 +1,104 @@
+/* Reset Dasar */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background: #fff0f3; 
+    color: #590d22; 
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+/* Hero Section - Biar Full Screen & Teks di Tengah */
+.hero {
+    height: 100vh;
+    background: url('verr/foto/foto1.jpg') center/cover no-repeat;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    position: relative;
+    text-align: center;
+}
+.overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+.content { position: relative; z-index: 1; color: white; padding: 20px; width: 100%; }
+.judul { font-family: 'Sacramento', cursive; font-size: 3.5rem; }
+
+/* Kontainer Utama - Kunci Biar Gak Berantakan */
+.container { 
+    width: 100%;
+    max-width: 600px; /* Batasin lebar di HP biar gak meluber */
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+/* Surat */
+.card { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 20px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Galeri Grid - Kita Pakai 2 Kolom Saja di HP */
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* Maksa 2 kolom */
+    gap: 10px; 
+    width: 100%;
+}
+
+/* Item Foto - Rasio Kotak */
+.item.photo { 
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    border-radius: 12px; 
+    overflow: hidden; 
+}
+.item.photo img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* Video - Biar Full Lebar & Rasio 9:16 */
+.item.video-tiktok { 
+    grid-column: span 2; /* Video makan 2 kolom biar lebar */
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    aspect-ratio: 9 / 16;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000;
+}
+.item.video-tiktok video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* Animasi & Tombol */
+.fade-in { opacity: 0; transform: translateY(20px); transition: 0.8s all ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.music-btn {
+    position: fixed; bottom: 20px; right: 20px; background: #ff8fa3;
+    width: 50px; height: 50px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; cursor: pointer; z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+footer { padding: 40px; text-align: center; font-family: 'Sacramento', cursive; font-size: 1.5rem; }
+
+/* Desktop (Kalau dibuka di Laptop) */
+@media (min-width: 768px) {
+    .grid { grid-template-columns: repeat(4, 1fr); }
+    .item.video-tiktok { grid-row: span 2; grid-column: span 2; }
+}
